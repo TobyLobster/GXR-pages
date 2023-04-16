@@ -1,0 +1,165 @@
+<html>
+	<head>
+		<title>Graphics Extension ROM</title>
+<link href="../docs-assets/Breadcrumbs.css" rel="stylesheet" rev="stylesheet" type="text/css">
+<link href="../docs-assets/Breadcrumbs.css" rel="stylesheet" rev="stylesheet" type="text/css">
+<link href="../docs-assets/Carousel.css" rel="stylesheet" rev="stylesheet" type="text/css">
+<link href="../docs-assets/Navigation.css" rel="stylesheet" rev="stylesheet" type="text/css">
+<link href="../docs-assets/Base.css" rel="stylesheet" rev="stylesheet" type="text/css">
+		<meta name="viewport" content="width=device-width initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Language" content="en-gb">
+
+<link href="../docs-assets/Contents.css" rel="stylesheet" rev="stylesheet" type="text/css">
+<link href="../docs-assets/Progress.css" rel="stylesheet" rev="stylesheet" type="text/css">
+<link href="../docs-assets/Fonts.css" rel="stylesheet" rev="stylesheet" type="text/css">
+		
+	</head>
+	<body class="commentary-font">
+		<nav role="navigation">
+		<p>BBC Computer 32K</p>
+<h1>*GXR</h1>
+<ul><li><a href="../index.html">&#x21A9; home</a></li><li><span class="unlink">contents</span></li>
+<li><a href="S-s1.html">introduction</a></li>
+<li><a href="S-s2.html">constants</a></li>
+<li><a href="S-s3.html">memory addresses</a></li>
+<li><a href="S-s4.html"><b>$8000</b>: chapter 4</a></li>
+<li><a href="S-s5.html"><b>$8167</b>: chapter 5</a></li>
+<li><a href="S-s6.html"><b>$82a9</b>: chapter 6</a></li>
+<li><a href="S-s7.html"><b>$8349</b>: chapter 7</a></li>
+<li><a href="S-s8.html"><b>$88f9</b>: chapter 8</a></li>
+<li><a href="S-s9.html"><b>$8955</b>: chapter 9</a></li>
+<li><a href="S-s10.html"><b>$899d</b>: chapter 10</a></li>
+<li><a href="S-s11.html"><b>$8a8a</b>: chapter 11</a></li>
+<li><a href="S-s12.html"><b>$8bb4</b>: chapter 12</a></li>
+<li><a href="S-s13.html"><b>$8d83</b>: chapter 13</a></li>
+<li><a href="S-s14.html"><b>$8dd2</b>: chapter 14</a></li>
+<li><a href="S-s15.html"><b>$8e5b</b>: chapter 15</a></li>
+<li><a href="S-s16.html"><b>$9044</b>: chapter 16</a></li>
+<li><a href="S-s17.html"><b>$9872</b>: chapter 17</a></li>
+<li><a href="S-s18.html"><b>$9ced</b>: chapter 18</a></li>
+<li><a href="S-s19.html"><b>$9f7c</b>: chapter 19</a></li>
+<li><a href="S-s20.html"><b>$a258</b>: chapter 20</a></li>
+<li><a href="S-s21.html"><b>$a40e</b>: chapter 21</a></li>
+<li><a href="S-s22.html"><b>$a808</b>: chapter 22</a></li>
+<li><a href="S-s23.html"><b>$b9ea</b>: chapter 23</a></li>
+<li><a href="S-s24.html"><b>$bdd0</b>: chapter 24</a></li>
+<li><a href="S-s25.html"><b>$bfdb</b>: chapter 25</a></li>
+
+</ul>
+		</nav>
+		<main role="main">
+		<ul class="crumbs"><li><a href="../index.html">Home</a></li><li><b>Graphics Extension ROM</b></li></ul>
+		<p class="purpose">The contents of Acornsoft's Graphics Extension ROM.</p>
+		<hr>
+		<div class="contentspage">
+			<ul class="sectionlist">
+				<li>
+					<p><a href="S-s1.html"><spon class="sectiontitle">Chapter 1: Introduction</span></a> -
+					<span class="purpose">About the Graphics Extension ROM</span></p>
+				</li>
+				<li>
+					<p><a href="S-s2.html"><spon class="sectiontitle">Chapter 2: Constants</span></a> -
+					<span class="purpose">Constants used by the ROM</span></p>
+				</li>
+				<li>
+					<p><a href="S-s3.html"><spon class="sectiontitle">Chapter 3: Memory locations</span></a> -
+					<span class="purpose">Memory locations used by the ROM</span></p>
+				</li>
+				<li>
+					<p><a href="S-s4.html"><spon class="sectiontitle">Chapter 4: ROM header and service entry routines</span></a> -
+					<span class="purpose">How the OS and ROM communicate - 359 bytes (2.1%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s5.html"><spon class="sectiontitle">Chapter 5: Parsing star commands</span></a> -
+					<span class="purpose">Identify if the star command is one we can handle - 322 bytes (1.9%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s6.html"><spon class="sectiontitle">Chapter 6: Parsing OSBYTE (*FX) commands</span></a> -
+					<span class="purpose">Check for the new *FX 163,242,0-66 commands - 160 bytes (0.9%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s7.html"><spon class="sectiontitle">Chapter 7: Parsing *HELP Commands</span></a> -
+					<span class="purpose">Includes the *HELP text itself - 1456 bytes (8.8%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s8.html"><spon class="sectiontitle">Chapter 8: Intercepting unknown VDU commands</span></a> -
+					<span class="purpose">Using the Extended VDU vectors - 92 bytes (0.5%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s9.html"><spon class="sectiontitle">Chapter 9: Trampoline code for OSWRCH</span></a> -
+					<span class="purpose">Intercepting OSWRCH and calling into the ROM - 72 bytes (0.4%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s10.html"><spon class="sectiontitle">Chapter 10: Star commands affecting memory</span></a> -
+					<span class="purpose">*GXR; *NOGXR; *FLOOD; *NOFLOOD; *SSPACE; *SNEW - 237 bytes (1.4%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s11.html"><spon class="sectiontitle">Chapter 11: Shared PLOT subroutines and tables</span></a> -
+					<span class="purpose">Common code and data used while plotting - 298 bytes (1.8%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s12.html"><spon class="sectiontitle">Chapter 12: VDU commands</span></a> -
+					<span class="purpose">Implementation of the new VDU commands - 463 bytes (2.8%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s13.html"><spon class="sectiontitle">Chapter 13: Sprite editor block memory copy</span></a> -
+					<span class="purpose">For moving sprite memory around - 79 bytes (0.4%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s14.html"><spon class="sectiontitle">Chapter 14: Point and Rectangle</span></a> -
+					<span class="purpose">Single pixel and filled rectangle - 137 bytes (0.8%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s15.html"><spon class="sectiontitle">Chapter 15: Parallelogram and Triangle</span></a> -
+					<span class="purpose">Filled primitives - 489 bytes (2.9%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s16.html"><spon class="sectiontitle">Chapter 16: Circle</span></a> -
+					<span class="purpose">Outline; Filled; Arc; Sector; Segment - 2094 bytes (12.7%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s17.html"><spon class="sectiontitle">Chapter 17: Lines</span></a> -
+					<span class="purpose">Includes dash pattern - 1147 bytes (7%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s18.html"><spon class="sectiontitle">Chapter 18: Flood fill and horizontal fill</span></a> -
+					<span class="purpose">Fills on screen starting from a single point - 655 bytes (4%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s19.html"><spon class="sectiontitle">Chapter 19: Rectangle copy and move</span></a> -
+					<span class="purpose">Moves a rectangluar area of the screen around - 732 bytes (4.4%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s20.html"><spon class="sectiontitle">Chapter 20: Sprite plotting</span></a> -
+					<span class="purpose">Plot at and pixel position, clipped to the graphics window - 438 bytes (2.6%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s21.html"><spon class="sectiontitle">Chapter 21: Sprite commands</span></a> -
+					<span class="purpose">*SGET; *SSAVE; *SLOAD; *SMERGE; *SCHOOSE; *SRENUMBER - 1018 bytes (6.2%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s22.html"><spon class="sectiontitle">Chapter 22: Sprite Editor</span></a> -
+					<span class="purpose">Full screen sprite editor - 4578 bytes (27.9%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s23.html"><spon class="sectiontitle">Chapter 23: Ellipse</span></a> -
+					<span class="purpose">Outline; Filled - 998 bytes (6%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s24.html"><spon class="sectiontitle">Chapter 24: Maths routines</span></a> -
+					<span class="purpose">Multiply; Divide; Square Root; Abs(a-b); Negate - 503 bytes (3%)</span></p>
+				</li>
+				<li>
+					<p><a href="S-s25.html"><spon class="sectiontitle">Chapter 25: Credits</span></a> -
+					<span class="purpose">The first names or nicknames of those involved - 37 bytes (0.2%)</span></p>
+				</li>
+			</ul>
+		</div>
+		<hr>
+		This is version 1.0.0 of the Reassembly, published on 31 Mar 2023.
+		Powered by <a href="https://github.com/ganelson/inweb">Inweb</a>.
+		</main>
+	</body>
+</html>
+
