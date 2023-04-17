@@ -435,7 +435,7 @@
 ;     Mark Sealey's review in Beebug Dec 1985 shows:
 ;       (see https://www.computinghistory.org.uk/downloads/14565 )
 ;       * an animated fountain screenshot
-;       * clown screenshot          (also shown in Practical Computing Magazine Dec 1985)
+;       * clown screenshot (this is available on the Master Welcome Disc)
 ;       * GXR logo / box screenshot (also shown in Practical Computing Magazine Dec 1985)
 ;
 ; ***************************************************************************************
@@ -1229,7 +1229,7 @@ ELECTRON    = 1002
     ; OS routine to update the mask value, and move graphics cursor address on to previous cell to the left
     ; On Entry:
     ;       Carry always SET
-    .moveGraphicsCursorAddressTotheLeftAndUpdateMask = $d3fd
+    .moveGraphicsCursorAddressTotheLeftAndUpdateMask    = $d3fd
 
     ; OS routine to copy eight bytes (four coordinates) of VDU variables
     ; On Entry:
